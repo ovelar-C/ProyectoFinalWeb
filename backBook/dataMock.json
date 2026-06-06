@@ -1,4 +1,9 @@
 [{
     "id" : 1,
-    "titulo" : "titulo 1"
+    "title" : "title 1",
+    "author" : "yo",
+    "price" : 10,
+    "stock" : 10,
+    "type" : "book",
+    "genres" : ["drama","fiction"]
 }]
