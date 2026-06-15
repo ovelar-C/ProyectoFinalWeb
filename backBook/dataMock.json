@@ -1,9 +1,45 @@
-[{
-    "id" : 1,
-    "title" : "title 1",
-    "author" : "yo",
-    "price" : 10,
-    "stock" : 10,
-    "type" : "book",
-    "genres" : ["drama","fiction"]
-}]
+[
+    {
+        "id": 1,
+        "title": "El mundo de Sofía",
+        "author": "Jostein Gaarder",
+        "price": 15000,
+        "stock": 10,
+        "type": "book",
+        "description": "Novela sobre la historia de la filosofía",
+        "genres": [
+            "filosofía",
+            "aventura"
+        ],
+        "editorial": "Siruela",
+        "publishedYear": 1991,
+        "lenguage": "spanish",
+        "image": "asset"
+    },
+    {
+        "id": 2,
+        "title": "title 1",
+        "author": "yo",
+        "price": 10,
+        "stock": 10,
+        "type": "book",
+        "genres": [
+            "drama",
+            "fiction"
+        ],
+        "editorial": "debolsillo"
+    },
+    {
+        "id": 3,
+        "title": "title 1",
+        "author": "yo",
+        "price": 10,
+        "stock": 10,
+        "type": "book",
+        "genres": [
+            "drama",
+            "fiction"
+        ],
+        "editorial": "debolsillo"
+    }
+]

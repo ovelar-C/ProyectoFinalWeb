@@ -1,0 +1,73 @@
+API BookStore
+
+•Entididad Libros
+id:
+titulo: (string[30], minimo y maximos)
+autor: lo mismo de arriba
+genero: lo mismo de arriba
+precio: float, minimo y maximos
+stock: int, minimo y maximos
+tipo: libro o Manga (string)
+
+
+
+•Entidad Usuario:
+id:
+nombre: string, minimo y maximos
+correo: lo mismo de arriba y que sea unico, email valido
+contraseña: hash? string minimo y maximos
+rol: user o admin (string)
+
+cuando no es valido hacer la compra?
+•Entidad compras
+id:
+usuarioID: debe existir
+libros:[{bookid (debe existir): cantidad(int): precioUnitario:(float)},{}] array no vacío
+precioTotal: float
+estado: finish o cancel (string)
+fecha?:
+
+-----------Endpoints libros-----------
+•GET -> all, by id, genre, type, author, title
+•POST -> add book, add user, add register buy
+•PATCH -> edit book and user
+•DELETE -> user, book
+
+-----------Endpoints user-----------
+•GET -> all, by id,
+•POST -> user
+•PATCH -> user by id
+•DELETE -> user by id
+
+-----------Endpoints compras-----------
+•GET -> all, by id, user/id/compras?
+•POST -> compras
+•DELETE -> compras by id
+
+• Middleware 
+    - logger
+    - validate book,user,compras
+    - autenticacion de usuario?
+
+logica de negocio-------
+usuario existe
+libro existe
+stock suficiente
+email no repetido
+-----------------------
+
+backend/
+  public/
+    images/
+
+{
+  "title": "El mundo de Sofía",
+  "image": "/images/el-mundo-de-sofia.jpg"
+}
+app.use('/images', express.static('public/images'));
+http://localhost:3000/images/el-mundo-de-sofia.jpg
+
+
+
+
+
