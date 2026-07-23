@@ -1,15 +1,39 @@
-const express = require('express');
-const app = express();
-const port = 3000;
-const cors = require('cors');
-const  routerBook = require('./src/routes/routesBook.js');
+/*
+require('./server.js');
+const Book = require('./src/model/modelBook.js');
 
-//global
-app.use(cors());
-app.use(express.json());
-//local
-app.use('/api/bookstore', routerBook);
 
-app.listen(port,() =>{
-    console.log("Server active in port :",port)
-})
+
+const book = new Book({
+    title : "El mundo de Sofía",
+    author : "Jostein Gaarder",
+    description : "novela sobre la historia de la filosofía.",
+    editorial : "siruela",
+    type: "book",
+    genre : ["filosofia" ,"romance"],
+    language : "español",
+    publishedYear : 1994,
+    price : 20000
+});
+
+
+async function saveUser(){
+    const userGuardado = await book.save();
+    console.log(userGuardado);
+}
+saveUser();
+*/
+require('./server.js');
+const User = require('./src/model/modelUser.js');
+
+const user = new User({
+    username : "Napoleon",
+    password : 'rey de francia',
+    email : 'napoleon@gmail.com'
+});
+
+async function saveUser(){
+    const userGuardado = await user.save();
+    console.log(userGuardado);
+}
+saveUser();

@@ -1,40 +1,85 @@
-const fs = require('fs');
-const path = require('path');
-const ubiBook = path.join(__dirname, '../../dataMock.json');
 
-function readData(){
-    try {
-        return JSON.parse(fs.readFileSync(ubiBook, 'utf-8'));
-    } catch (error) {
-        console.error(error);
-        return [];
+const {Schema,model} = require('mongoose');
+
+
+const listGenre = [
+    'fantasia',
+    'ciencia-ficcion',
+    'misterio',
+    'romance',
+    'horror',
+    'historico',
+    'juvenil',
+    'filosofia'
+];
+const listLanguage = [
+    'español',
+    'ingles',
+    'chino',
+    'frances'
+]
+
+//revisar genre
+
+const bookSchema = new Schema({
+    title: {
+        type: String,
+        minlength : 1,
+        maxlength : 64,
+        required : true
+    },
+    author : {
+        type: String,
+        minlength : 1,
+        maxlength : 64,
+        required : true
+    },
+    description: {
+        type: String,
+        minlength : 1,
+        maxlength : 250,
+        required : true
+    },
+    editorial: {
+        type: String,
+        minlength : 1,
+        maxlength : 32,
+        required : true
+    },
+    type: {
+        type : String,
+        enum : ['book', 'manga'],
+        required : true
+    },
+    genre : [{
+        type: String,
+        enum : listGenre,
+        required : true
+    }],
+    language : {
+        type: String,
+        enum : listLanguage,
+        required : true
+    },
+    publishedYear : {
+        type : Number,
+        min : 1000,
+        max : 3000,
+        required : true
+    },
+    price : {
+        type : Number,
+        min : 1,
+        required: true
+    },
+    stock : {
+        type : Number,
+        min : 0,
+        default : 0
     }
-}
+});
 
-function getAll(){
-    return readData();
-}
-function filter(filtros){
-    //claro aca filtramos lo que venga de parametro con mi data
-    // y solo validamos los que coicidan y dependiendo que campos son
-    //hacemos su filtrado
-    const books = readData();
-    const resultado = books.filter(book=>{
-        //{title : "el mundo de sofia"}
-        //[["title","el mundo de sofia"]]
-        //cuidado con los acentos
-        return Object.entries(filtros).every(([campo,value]) =>{
-            return book[campo].toLowerCase() === value.toLowerCase();
-        })
-    })
-    console.log(resultado);
-    if(resultado.length == 0){
-        return false
-    }
-    return resultado;
-}
+//aca se crea una collecion con el modelo
+const Book = model('book', bookSchema);
 
-module.exports = {
-    getAll,
-    filter
-}
+module.exports = Book;

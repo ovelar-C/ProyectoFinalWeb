@@ -4,6 +4,49 @@
     box-sizing: border-box; 
     font-family:system-ui;
 }
-body{
-    margin: 0;
+.titulo{
+    display: flex;
+
+    justify-content: center;
+    margin: 2rem;
+    background-color: white;
+    padding: 0.5rem;
+    box-shadow: 
+    0px 5px black,
+    0px -5px black,
+    5px 0px black,
+    -5px 0px black, 
+
+    0px 10px #00000038, 
+    5px 5px #00000038, 
+    -5px 5px #00000038, 
+    inset 0px 0px #ffffff36;
+}
+.form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 1rem;
+    padding: 1rem;
+    background-color: rgb(255, 255, 255);
+}
+.inputs {
+    border: 2px solid black;
+    padding: 0.5rem;
+    margin: 1rem;
+}
+.botones{
+    border: none;
+    padding: 0.5rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    margin: 0.5rem;
+    box-shadow: 0px 4px black, 0px -4px black, 4px 0px black, -4px 0px black, 0px 10px #00000038, 5px 5px #00000038, -5px 5px #00000038, inset 0px 5px #e2060600;
+    cursor: pointer;
+    background-color: #742628;
+    color: white;
+}
+.contenedor {
+    box-shadow: 0px 5px black, 0px -5px black, 5px 0px black, -5px 0px black, 0px 10px #00000038, 5px 5px #00000038, -5px 5px #00000038, inset 0px 5px #ffffff36;
 }

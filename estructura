@@ -1,0 +1,140 @@
+Datos:
+• Books :
+
+title {
+    - string
+    - maximo[30];
+    - minimo[1]
+    - requerido
+}
+author {
+    - string
+    - maximo[30];
+    - minimo[1]
+    - requerido
+}
+description{
+    - string
+    - maximo[200];
+    - minimo[1]
+    - requerido
+}
+editorial{
+    - string
+    - maximo[30];
+    - minimo[1]
+    - requerido
+}
+type{
+    - string{"book" || "manga"}
+    - requerido
+}
+establecer una lista de generos[]
+genre{
+    - string
+    - maximo[30]
+    - minimo[1]
+    - requerido
+}
+establecer una lista de idiomas[]
+lenguage{
+    - string
+    - maximo[30]
+    - minimo[1]
+    - requerido
+}
+publishedYear{
+    - Number[int];
+    - limite minimo[1000];
+    - limite maximo[año actual];
+    - requerido
+}
+price{
+    - Number[float]
+    - limite minimo : mayor a 0
+    - limite maximo[no hay?]
+    - requerido
+}
+stock{
+    - Number[int]
+    - limite minimo [0]
+    - limite maximo[no tiene?]
+    - requerido
+}
+-----------------------------------------------
+
+• Users :
+
+username{
+    - string
+    - maximo [30]
+    - limite minimo[4];
+    - requerido
+}
+correo{
+    - string
+    - maximo[30]
+    - requerido
+    - validar que sea un correo y unico
+}
+password{
+    - string
+    - maximo[30];
+    - limite minimo[8];
+    - requerido
+    - hash? jwt?
+}
+rol{
+    - string{"admin" || "user"}
+}
+dateCreate{
+    - date
+    - requerido
+}
+-----------------------------------------------
+
+• Compras :
+
+userId{
+    - id
+    - requerido
+    - que coincida con uno existente
+}
+items[
+    -requerido:
+    {
+        - id book
+        . price {float}
+        - que coincida con uno existente
+        - quantity{int (quantity <= book.stock)}
+    },
+    {
+        - id book
+        - price {float}
+        - que coincida con uno existente
+        - quantity{int (quantity <= book.stock)}
+    },
+]
+total{
+    - float
+    - quantity * price
+} 
+dateCompra{
+    - date?
+    - requerido
+}
+-----------------------------------------------
+
+Mongo database
+• bookstore
+
+Mongo Collection
+• Users
+• Books
+• Compras
+
+
+    
+
+
+

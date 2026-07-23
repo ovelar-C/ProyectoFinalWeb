@@ -1,31 +1,33 @@
-const modelBook = require('../model/modelBook.js');
+const serviceBook = require('../services/serviceBook.js');
 
-function getAll(req,res){
-    const books = modelBook.getAll();
+async function getAll(req,res){
     try {
+        const books =  await serviceBook.getAll();
+
         if(books.length > 0){
             return res.status(200).json(books);
         }else{
             return res.status(404).json({mensaje : "sin datos"});
         }
     } catch (error) {
-        console.log(error)
+        console.log(error);
+        return res.status(500).json({mensaje : "error server"})
     }
 }
-function filter(req,res){
-    const filtros = req.query;
-    console.log(filtros);
-    
-    const dataFiltrados = modelBook.filter(filtros);
-    
-    if(dataFiltrados){
-        return res.status(200).json(dataFiltrados);
-    }else{
-        return res.status(400).json({mensaje : "error al aplicar filtros"});
-    }
 
+async function postBook(req,res){
+    try {
+        const  book = await serviceBook.postBook(req.body);
+        if(!book) return res.status(404).json({error : error.message});
+        return res.status(202).json(book);
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({error : error.message});
+    }
 }
+
+
 module.exports={
     getAll,
-    filter
+    postBook,
 }
