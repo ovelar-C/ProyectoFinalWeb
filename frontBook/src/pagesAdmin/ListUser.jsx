@@ -1,7 +1,18 @@
+import useGetAllUser from "../hooks/useGetAllUser"
+
 export default function ListUser(){
+    const datos = useGetAllUser() || [];
     return(
         <>
-        <h3>pagina solo para admins</h3>
+        <main>
+            <ul>
+                {datos?.map((user)=>(
+                    <li key={user._id}>
+                        <span>{user.username}</span>
+                    </li>
+                ))}
+            </ul>
+        </main>
         </>
     )
 }

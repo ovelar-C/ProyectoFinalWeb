@@ -8,6 +8,8 @@ import Books from "../pages/Books";
 import PrivateRoute from "./PrivateRoute";
 import ListUser from "../pagesAdmin/ListUser";
 import AdminRoutes from "./AdminRoutes";
+import PageNoFound from "../componentes/PageNoFound";
+import Configuracion from "../pagesAdmin/Configuracion";
 
 export default function AppRoutes() {
     //envolver las rutas privadas
@@ -18,13 +20,15 @@ export default function AppRoutes() {
                     <Route path="/profile" element={<Profile />} />
                 </Route>
                 <Route element={<AdminRoutes />}>
-                    <Route path="/listUser" element={<ListUser />} />
+                    <Route path="/configuracion" element={<Configuracion/>}/>
+                    <Route path="/adminuser" element={<ListUser />} />
                 </Route>
 
                 <Route path="/" element={<Home />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
                 <Route path="/books" element={<Books />} />
+                <Route path="*" element={<PageNoFound/>}/>
             </Route>
         </Routes>
     )

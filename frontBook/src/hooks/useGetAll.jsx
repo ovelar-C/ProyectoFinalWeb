@@ -8,9 +8,7 @@ export default function useGetAll(){
     useEffect(()=>{
         axios.get(api)
         .then((respuesta)=>{
-            console.log(respuesta.data);
             setDatos(respuesta.data);
-
         })
         .catch((error)=>{
             console.log(error);
