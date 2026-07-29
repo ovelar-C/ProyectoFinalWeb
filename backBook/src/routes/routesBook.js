@@ -3,6 +3,6 @@ const router = express.Router();
 const controller = require('../controller/controllerBook');
 
 router.get('/', controller.getAll);
-router.post('/post', controller.postBook);
+router.post('/register', controller.agregarBook);
 
 module.exports = router;

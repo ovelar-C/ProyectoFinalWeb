@@ -19,7 +19,7 @@ async function getFilter() {
     // y ver si viene filtrado por genre,type o lenguage
 }
 
-async function postBook(nuevoBook) {
+async function agregarBook(nuevoBook) {
     //nuevoBook hacer validacion middlwware
     //no agregamos id porque mongo ya lo hace? nose si es bueno o malo
     //depende porque si tengo que buscar manualmente o no
@@ -38,5 +38,5 @@ async function putBook(){
 }
 module.exports = {
     getAll,
-    postBook,
+    agregarBook,
 }

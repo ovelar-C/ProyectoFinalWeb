@@ -48,7 +48,7 @@ const bookSchema = new Schema({
     },
     type: {
         type : String,
-        enum : ['book', 'manga'],
+        enum : ['libro', 'manga'],
         required : true
     },
     genre : [{
@@ -76,6 +76,11 @@ const bookSchema = new Schema({
         type : Number,
         min : 0,
         default : 0
+    },
+    bookImage : {
+        type : String,
+        default : null,
+        required : true 
     }
 });
 

@@ -1,14 +1,19 @@
 import { Link } from "react-router-dom";
-import '../stylepages/navBarra.css'
+import styles from '../stylepages/navBarra.module.css'
 import { useContext } from "react";
 import { DatosUserContext } from "../context/UserContext";
-
+import imagen from "../assets/logo.webp"
 //nav para : admin, usuario, lector
 export default function NavBarra() {
     const { datosUser, signOut } = useContext(DatosUserContext);
     return (
         <>
-            <nav className="navBarra">
+            <nav className={styles.barra}>
+                <img
+                className={styles.imagen}
+                src={imagen}
+                />
+                <h1>BookStore</h1>
                 <Link className="botones" to={'/'}>home</Link>
                 <Link className="botones" to={'/books'}>libros</Link>
                 <Link className="botones" to={'/profile'}>perfil</Link>

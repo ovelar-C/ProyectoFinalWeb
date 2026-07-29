@@ -15,9 +15,9 @@ async function getAll(req,res){
     }
 }
 
-async function postBook(req,res){
+async function agregarBook(req,res){
     try {
-        const  book = await serviceBook.postBook(req.body);
+        const  book = await serviceBook.agregarBook(req.body);
         if(!book) return res.status(404).json({error : error.message});
         return res.status(202).json(book);
     } catch (error) {
@@ -29,5 +29,5 @@ async function postBook(req,res){
 
 module.exports={
     getAll,
-    postBook,
+    agregarBook,
 }

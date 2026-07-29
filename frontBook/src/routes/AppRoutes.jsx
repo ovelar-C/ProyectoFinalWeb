@@ -6,10 +6,12 @@ import Profile from "../pages/Profile";
 import Register from "../pages/Register";
 import Books from "../pages/Books";
 import PrivateRoute from "./PrivateRoute";
-import ListUser from "../pagesAdmin/ListUser";
 import AdminRoutes from "./AdminRoutes";
 import PageNoFound from "../componentes/PageNoFound";
 import Configuracion from "../pagesAdmin/Configuracion";
+import CreateBooks from "../pagesAdmin/CreateBooks";
+import CreateUsers from "../pagesAdmin/CreateUsers";
+import EditarBooks from "../pagesAdmin/EditarBooks";
 
 export default function AppRoutes() {
     //envolver las rutas privadas
@@ -21,7 +23,10 @@ export default function AppRoutes() {
                 </Route>
                 <Route element={<AdminRoutes />}>
                     <Route path="/configuracion" element={<Configuracion/>}/>
-                    <Route path="/adminuser" element={<ListUser />} />
+                    <Route path="/createbooks" element={<CreateBooks/>}/>
+                    <Route path="/createusers" element={<CreateUsers/>}/>
+                    <Route path="/editarbooks" element={<EditarBooks/>}/>
+                    
                 </Route>
 
                 <Route path="/" element={<Home />} />

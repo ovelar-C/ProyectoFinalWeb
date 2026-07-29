@@ -1,0 +1,22 @@
+.contenedor{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.caja{
+    display: flex;
+    flex-direction: row;
+}
+.uno{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.dos{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
