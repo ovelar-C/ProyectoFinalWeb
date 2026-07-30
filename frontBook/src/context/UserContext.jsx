@@ -10,18 +10,23 @@ export default function UserContext({ children }) {
     const navigate = useNavigate();
 
     async function signUp(dataUser) {
-        const response = await registerUser(dataUser);
-        
-        if (response) {
-            const datosNuevos = {
-            username: response.username,
-            email: response.email,
-            rol: response.rol
+        try {
+            const response = await registerUser(dataUser);
+
+            if (response.ok) {
+                const datosNuevos = {
+                    username: response.data.username,
+                    email: response.data.email,
+                    rol: response.data.rol
+                }
+                saveLocalStorage(datosNuevos);
+                return navigate('/profile');
+            }
+            return navigate('/register');
+        } catch (error) {
+            console.log(error);
         }
-            saveLocalStorage(datosNuevos);
-            return navigate('/profile');
-        }
-        return navigate('/register');
+
     }
 
     async function signUser(dataUser) {
@@ -33,7 +38,7 @@ export default function UserContext({ children }) {
         return respuesta;
     }
 
-    function signOut(){
+    function signOut() {
         setDatosUser(null);
         localStorage.removeItem("user");
         navigate("/login");
@@ -46,7 +51,7 @@ export default function UserContext({ children }) {
 
     return (
         <>
-            <DatosUserContext.Provider value={{ signOut,signUp, datosUser, signUser }}>
+            <DatosUserContext.Provider value={{ signOut, signUp, datosUser, signUser }}>
                 {children}
             </DatosUserContext.Provider>
         </>

@@ -14,6 +14,16 @@ async function getAll(req,res){
         return res.status(500).json({mensaje : "error server"})
     }
 }
+async function getById(req,res){
+    try {
+        const book = await serviceBook.getById(req.params.id);
+        if(!book) return res.status(404).json({mensaje : "error al buscar pot id"});
+        return res.status(200).json(book);
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({mensaje: "error server"});
+    }
+}
 
 async function agregarBook(req,res){
     try {
@@ -30,4 +40,5 @@ async function agregarBook(req,res){
 module.exports={
     getAll,
     agregarBook,
+    getById,
 }

@@ -55,7 +55,7 @@ export default function Login() {
 
                     {error &&
                         <span>Error en los datos. <br /> </span>}
-                    <span>¿no tienes cuenta? <Link to={'/register'}>registrate</Link></span>
+                    <span>¿NO TENES CUENTA? <Link to={'/register'}>registrate</Link></span>
                     <button type='submit' className='botones'>Sign In</button>
                 </form>
             </LayoutLogin>

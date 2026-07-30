@@ -2,6 +2,7 @@ import { useContext } from "react"
 import { DatosBookContext } from "../context/BookContext"
 import imagen from "../assets/place.jpg"
 import styles from  "../stylepages/catalog.module.css"
+import { Link } from "react-router-dom";
 
 export default function CatalogBook() {
     const { dataBook } = useContext(DatosBookContext);
@@ -15,6 +16,7 @@ export default function CatalogBook() {
                 <ul className={styles.catalogo}>
                     {dataBook?.map((book) => (
                         <li key={book._id} className={styles.card}>
+                            <Link to={`/book/${book._id}`}>
                             <div className={styles.marco}>
                                 <img
                                     className={styles.imagen}
@@ -22,6 +24,7 @@ export default function CatalogBook() {
                                     alt={book.title}
                                 />
                             </div>
+                            </Link>
 
                             <h3 className={styles.tituloCatalog}>{book.title}</h3>
                             <span>{book.author}</span>

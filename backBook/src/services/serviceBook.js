@@ -12,6 +12,16 @@ async function getContent() {
 function getAll() {
     return getContent();
 }
+//validar id con mongoose
+async function getById(id) {
+    try {
+        const book = await Book.findById(id);
+        return book;
+    } catch (error) {
+        console.log(error);
+        return null;
+    }
+}
 async function getFilter() {
     //me van a dar un dato, yo buscare por
     // estos campos:
@@ -33,10 +43,11 @@ async function agregarBook(nuevoBook) {
         return false
     }
 }
-async function putBook(){
-    
+async function putBook() {
+
 }
 module.exports = {
     getAll,
     agregarBook,
+    getById,
 }

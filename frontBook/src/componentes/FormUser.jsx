@@ -1,10 +1,8 @@
-import { useContext, useState } from "react";
-import LayoutLogin from "../componentes/LayoutLogin";
-import { DatosUserContext } from "../context/UserContext";
+import { useState } from "react";
 import styles from "../stylepages/formUser.module.css"
-export default function FormUser() {
-    const { signUp } = useContext(DatosUserContext);
-    const [error, setError] = useState("");
+
+
+export default function FormUser({ funcion }) {
     const [dataUser, setDataUser] = useState({
         "username": "",
         "email": "",
@@ -15,9 +13,10 @@ export default function FormUser() {
     async function manejarSubmit(e) {
         e.preventDefault();
         try {
-            await signUp(dataUser);
+            console.log(dataUser);
+            await funcion(dataUser);
         } catch (error) {
-            setError(error);
+            console.log(error)
         }
     }
 
@@ -58,7 +57,6 @@ export default function FormUser() {
                         type='text'
                         value={dataUser.rol}
                         onChange={manejarChange} required />
-                    {error && <h3>correo ya registrado</h3>}
                     <button type='submit' className='botones'>Registrar Usuario</button>
                 </form>
             </div>

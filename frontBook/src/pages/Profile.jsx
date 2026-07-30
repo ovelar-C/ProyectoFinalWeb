@@ -6,6 +6,7 @@ export default function Profile() {
     const { datosUser } = useContext(DatosUserContext);
     return (
         <>
+        <h1>FAVORITOS Y COMPRAS</h1>
             <div className={styles.perfil}>
                 <h2 className={styles.titulo}>Perfil</h2>
 
@@ -14,17 +15,14 @@ export default function Profile() {
                         <span>Usuario</span>
                         {datosUser?.username}
                     </p>
-
                     <p>
                         <span>Email</span>
                         {datosUser?.email}
                     </p>
-
                     <p>
                         <span>Rol</span>
                         {datosUser?.rol}
                     </p>
-
                     <p>
                         <span>Password</span>
                         {datosUser?.password}

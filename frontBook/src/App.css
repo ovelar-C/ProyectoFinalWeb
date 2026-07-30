@@ -11,8 +11,7 @@ body{
 
 }
 .titulo{
-    display: flex;
-    justify-content: center;
+    text-align: center;
     margin: 2rem;
     background-color: #a86b4c;
     color: white;

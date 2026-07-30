@@ -13,13 +13,12 @@
     font-size: 1rem;
 
 }
-
-.correcto {
-    background-color: #4c942d;
-    color: white;
+.success{
+    background: #3ea756;
+    color:#ffffff;
 }
 
-.error {
-    background-color: #92212b;
-    color: white;
+.error{
+    background:#e02a2a;
+    color:#ffffff;
 }
