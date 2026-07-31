@@ -24,16 +24,15 @@ export default function BookDetalle() {
     return (
         <>
             <main className={styles.contenedor}>
-               <DataBookDetalle
-               book = {book}
-               disminuir={disminuir}
-               aumentar={aumentar}
-               cantidad = {cantidad}
-               total = {total}
-
-               />
+                <DataBookDetalle
+                    book={book}
+                    disminuir={disminuir}
+                    aumentar={aumentar}
+                    cantidad={cantidad}
+                    total={total}
+                />
                 <DataBookEspecificaciones
-                book = {book}/>
+                    book={book} />
             </main>
         </>
     )

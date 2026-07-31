@@ -14,3 +14,7 @@
 .list{
     margin: 1rem;
 }
+.datos{
+    display: flex;
+    justify-content: center;
+}

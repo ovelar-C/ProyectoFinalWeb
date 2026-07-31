@@ -1,6 +1,6 @@
 import { useState } from "react";
 import FormBook from "../componentes/FormBook";
-import ListBook from "../componentes/ListBooks";
+import ListBook from "../componentes/List";
 import registerBook from "../services/registerBook";
 import Alert from "../componentes/Alert";
 
@@ -14,13 +14,15 @@ export default function CreateBooks() {
             setRespuesta(response);
 
             if (response.ok) {
+                setRespuesta({ok : true});
                 setMensaje("Libro guardado con exito");
             } else {
+                setRespuesta({ok:false});
                 setMensaje("Error al guradar el libro")
             }
         } catch (error) {
             console.log(error);
-            setRespuesta({ok : false});
+            setRespuesta({ ok: false });
             setMensaje(
                 error.response?.data?.message ||
                 "No se pudo guardar el libro"
@@ -30,9 +32,9 @@ export default function CreateBooks() {
     }
     return (
         <>
-            <Alert mensaje={mensaje} respuesta = {respuesta} limpiar = {()=>{
+            <Alert mensaje={mensaje} respuesta={respuesta} limpiar={() => {
                 setMensaje(""); setRespuesta(null);
-            }}/>
+            }} />
             <h1 className="titulo">Registrando Libros</h1>
             <FormBook
                 datoInicial={null}

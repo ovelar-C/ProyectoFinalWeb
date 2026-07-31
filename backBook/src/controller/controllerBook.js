@@ -35,10 +35,21 @@ async function agregarBook(req,res){
         return res.status(500).json({error : error.message});
     }
 }
-
+async function patchBook(req, res){
+    try {
+        const id = req.params.id;
+        const updateBook = await serviceBook.patchBook(id,req.body);
+        if(!updateBook) return res.status(400).json({mensaje : "no se pudo actualizar"});
+        return res.status(200).json(updateBook);
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({mensaje : "error server"});
+    }
+}
 
 module.exports={
     getAll,
     agregarBook,
     getById,
+    patchBook
 }

@@ -43,11 +43,22 @@ async function agregarBook(nuevoBook) {
         return false
     }
 }
-async function putBook() {
-
+async function patchBook(id,data) {
+    try {
+        const updateBook = await Book.findByIdAndUpdate(
+            id,
+            { $set : data},
+            {new : true, runValidators: true}
+        );
+        return updateBook;
+    } catch (error) {
+        console.log(error);
+        return false;
+    }
 }
 module.exports = {
     getAll,
     agregarBook,
     getById,
+    patchBook,
 }

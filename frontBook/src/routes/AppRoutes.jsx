@@ -13,6 +13,7 @@ import CreateBooks from "../pagesAdmin/CreateBooks";
 import CreateUsers from "../pagesAdmin/CreateUsers";
 import EditarBooks from "../pagesAdmin/EditarBooks";
 import BookDetalle from "../componentes/BookDetalle";
+import EditarUsers from "../pagesAdmin/EditarUsers";
 
 export default function AppRoutes() {
     //envolver las rutas privadas
@@ -26,7 +27,8 @@ export default function AppRoutes() {
                     <Route path="/configuracion" element={<Configuracion/>}/>
                     <Route path="/createbooks" element={<CreateBooks/>}/>
                     <Route path="/createusers" element={<CreateUsers/>}/>
-                    <Route path="/editarbooks" element={<EditarBooks/>}/>
+                    <Route path="/editarbooks/:id" element={<EditarBooks/>}/>
+                    <Route path="/editarusers/:id" element={<EditarUsers/>}/>
                     
                 </Route>
 

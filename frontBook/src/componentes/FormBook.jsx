@@ -1,8 +1,8 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 import styles from "../stylepages/formBook.module.css"
-import { useNavigate } from "react-router-dom";
-export default function FormBook({ datoInicial, funcion, modo }) {
+import { data, useNavigate } from "react-router-dom";
+export default function FormBook({ datoInicial, funcion, modo, cambiar }) {
     const [formDatos, setFormDatos] = useState(
         datoInicial ||
         {
@@ -18,6 +18,12 @@ export default function FormBook({ datoInicial, funcion, modo }) {
             stock: "",
             bookImage: "",
         });
+
+    useEffect(() => {
+        setFormDatos(datoInicial);
+    }, [datoInicial]);
+    if(!formDatos) return <h3>cargando datos</h3>
+
     const opcionesTipos = ["libro", "manga"];
     const opcionesGenero = [
         'fantasia',
@@ -38,7 +44,6 @@ export default function FormBook({ datoInicial, funcion, modo }) {
     function handleSubmit(e) {
         e.preventDefault();
         funcion(formDatos);
-        //navigate("/configuracion")
     }
     function handleChange(e) {
         const { id, value } = e.target;
@@ -51,8 +56,8 @@ export default function FormBook({ datoInicial, funcion, modo }) {
         <>
             <div className={styles.contenedor}>
                 <form
-                onSubmit={handleSubmit}
-                className={`${styles.form} form`}>
+                    onSubmit={handleSubmit}
+                    className={`${styles.form} form`}>
                     <div className={styles.caja}>
 
 
@@ -64,7 +69,8 @@ export default function FormBook({ datoInicial, funcion, modo }) {
                                 id="title"
                                 value={formDatos.title}
                                 onChange={handleChange}
-                                required />
+                                required
+                                disabled={!modo} />
                             <label>Autor:</label>
                             <input
                                 className="inputs"
@@ -72,7 +78,8 @@ export default function FormBook({ datoInicial, funcion, modo }) {
                                 id="author"
                                 value={formDatos.author}
                                 onChange={handleChange}
-                                required />
+                                required 
+                                disabled={!modo}/>
                             <label>Descripción:</label>
                             <input
                                 className="inputs"
@@ -80,7 +87,8 @@ export default function FormBook({ datoInicial, funcion, modo }) {
                                 id="description"
                                 value={formDatos.description}
                                 onChange={handleChange}
-                                required />
+                                required 
+                                disabled={!modo}/>
                             <label>Editorial:</label>
                             <input
                                 className="inputs"
@@ -88,7 +96,8 @@ export default function FormBook({ datoInicial, funcion, modo }) {
                                 id="editorial"
                                 value={formDatos.editorial}
                                 onChange={handleChange}
-                                required />
+                                required 
+                                disabled={!modo}/>
 
                             <label>Tipo:</label>
                             <select
@@ -97,6 +106,7 @@ export default function FormBook({ datoInicial, funcion, modo }) {
                                 value={formDatos.type}
                                 onChange={handleChange}
                                 required
+                                disabled={!modo}
                             >
                                 <option value="" disabled>seleciona que tipo es</option>
                                 {opcionesTipos.map((tipo, index) => (
@@ -115,7 +125,8 @@ export default function FormBook({ datoInicial, funcion, modo }) {
                                 id="genre"
                                 value={formDatos.genre}
                                 onChange={handleChange}
-                                required >
+                                required
+                                disabled={!modo}>
                                 <option value="" disabled>Seleccione el Genero</option>
                                 {opcionesGenero.map((genero, index) => (
                                     <option key={index} value={genero}>
@@ -129,7 +140,8 @@ export default function FormBook({ datoInicial, funcion, modo }) {
                                 id="language"
                                 value={formDatos.language}
                                 onChange={handleChange}
-                                required>
+                                required
+                                disabled={!modo}>
                                 <option value="" disabled >Seleccione el Idioma</option>
                                 {opcionesLenguaje.map((idioma, index) => (
                                     <option key={index} value={idioma}>{idioma}</option>
@@ -137,13 +149,14 @@ export default function FormBook({ datoInicial, funcion, modo }) {
                             </select>
                             <label>Año de publicación:</label>
                             <input
-                            placeholder="mayor a mil"
+                                placeholder="mayor a mil"
                                 className="inputs"
                                 type="number"
                                 id="publishedYear"
                                 value={formDatos.publishedYear}
                                 onChange={handleChange}
-                                required />
+                                required 
+                                disabled={!modo}/>
                             <label>Precio:</label>
                             <input
                                 className="inputs"
@@ -151,7 +164,8 @@ export default function FormBook({ datoInicial, funcion, modo }) {
                                 id="price"
                                 value={formDatos.price}
                                 onChange={handleChange}
-                                required />
+                                required 
+                                disabled={!modo}/>
                             <label>Stock:</label>
                             <input
                                 className="inputs"
@@ -159,26 +173,48 @@ export default function FormBook({ datoInicial, funcion, modo }) {
                                 id="stock"
                                 value={formDatos.stock}
                                 onChange={handleChange}
-                                required />
+                                required 
+                                disabled={!modo}/>
                             <label>Direccion de imagen</label>
                             <input
-                            placeholder="/portadas/"
-                            className="inputs"
-                            type="text"
-                            id="bookImage"
-                            value={formDatos.imageUri}
-                            onChange={handleChange}
-                            required
+                                placeholder="/portadas/"
+                                className="inputs"
+                                type="text"
+                                id="bookImage"
+                                value={formDatos.bookImage || ""}
+                                onChange={handleChange}
+                                required
+                                disabled={!modo}
+
                             />
                         </div>
                     </div>
 
-
                     {modo == "crear" && <button className="botones" type="submit">Registrar Libro</button>}
-                    {modo == "editar" &&
-                        <button className="botones" type="submit">boton editar</button>}
+                    {modo ? (
+                        <>
+                        <button
+                            className="botones"
+                            type="button"
+                            onClick={cambiar}>
+                            edición habilitada
+                        </button>
+                        <button
+                            type="submit"
+                            className="botones">
+                            guardar
+                            </button>
+                        </>
+                    ): (
+                        <button
+                            className="botones" 
+                            type="button"
+                            onClick={cambiar}>
+                            edición desabilitada
+                            </button>
+                    )}
                 </form>
-            </div>
+            </div >
         </>
     )
 }
